@@ -12,7 +12,6 @@ const PlayerDetails = () => {
     about,
     batting,
     biddingPrice,
-    bowling,
     country,
     image,
     role,

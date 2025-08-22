@@ -1,0 +1,15 @@
+.newsletter_letter_button input {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 1);
+  padding: 15px 20px 15px 20px;
+  outline: none;
+  border: none;
+}
+.newsletter_letter_button button {
+  box-shadow: inset 4px 4px 20px 0px rgba(19, 19, 19, 0.3);
+  padding: 15px 20px 15px 20px;
+  background: linear-gradient(to right, #e6cca8, #ef7e93);
+}
+.footer_bottom_container {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}

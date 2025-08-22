@@ -176,9 +176,8 @@ const Home = () => {
 
         <Newsletter />
       </div>
-      <div className="border-2 border-black h-[1300px]">
-        <Footer />
-      </div>
+      {/* Footer Section */}
+      <Footer />
     </div>
   );
 };

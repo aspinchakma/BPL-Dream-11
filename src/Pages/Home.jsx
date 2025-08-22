@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import AvailableContainer from "../Components/AvailableContainer";
 import Banner from "../Components/Banner";
@@ -7,13 +7,21 @@ import Header from "../Components/Header";
 import Newsletter from "../Components/Newsletter";
 import SelectedContainer from "../Components/SelectedContainer";
 import ToggleController from "../Components/ToggleController";
+import { addCoinLs, loadCoinLS, loadDataLS } from "../Utilities/LocalStorage";
 import "./Home.css";
 
 const Home = () => {
   // Displaying Coing
   const [coin, setCoin] = useState(0);
+  // first time getCoin from localStorage
+  useEffect(() => {
+    const money = loadCoinLS();
+    setCoin(money);
+  }, []);
   const addCoin = () => {
     setCoin(coin + 290000);
+    // add to local storage or update
+    addCoinLs(coin + 290000);
     toast(`Successfully Added ${290000} Taka!`);
   };
 
@@ -38,6 +46,8 @@ const Home = () => {
         if (!isExist) {
           setChoosePlayers([...choosePlayers, player]);
           setCoin(coin - player.biddingPrice);
+          // update local storage data
+          addCoinLs(coin - player.biddingPrice);
           toast("Successfully Added In Your Team!");
         } else {
           toast("Player Already Added!");
@@ -58,6 +68,12 @@ const Home = () => {
     setChoosePlayers(filteredData);
     toast("Successfully deleted!");
   };
+
+  // fist data load when user refresh the ui
+  useEffect(() => {
+    const players = loadDataLS();
+    console.log(players);
+  }, []);
   return (
     <div className=" home_container">
       <ToastContainer

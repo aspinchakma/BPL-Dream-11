@@ -11,8 +11,8 @@ const SelectedPlayer = ({ player, handleDeletedPerson }) => {
           alt={name}
         />
         <div>
-          <h3>{name}</h3>
-          <p>{batting}</p>
+          <h3 className="text-xl font-bold">{name}</h3>
+          <p className="text-[#717171]">{batting}</p>
         </div>
       </div>
       <FontAwesomeIcon

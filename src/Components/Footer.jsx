@@ -50,12 +50,12 @@ const Footer = () => {
               </p>
               <div className="newsletter_letter_button mt-3">
                 <input
-                  className="w-full rounded-lg lg:w-[70%] lg:rounded-r-none inline-block"
+                  className="rounded-l-lg lg:w-[70%] inline-block"
                   type="email"
                   required
                   placeholder="Enter your email"
                 />
-                <button className="font-bold rounded-lg lg:w-[30%] lg:rounded-l-none inline-block w-full mt-4 lg:mt-0">
+                <button className="font-bold rounded-r-lg w-[30%]  inline-block mt-4 lg:mt-0">
                   Subscribe
                 </button>
               </div>

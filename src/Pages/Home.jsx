@@ -174,7 +174,9 @@ const Home = () => {
           />
         )}
 
-        <Newsletter />
+        <div className="relative">
+          <Newsletter />
+        </div>
       </div>
       {/* Footer Section */}
       <Footer />

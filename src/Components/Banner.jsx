@@ -1,5 +1,5 @@
 import "./Banner.css";
-const Banner = () => {
+const Banner = ({ addCoin }) => {
   return (
     <div className="banner_container lg:py-[64px] py-[40px]">
       <img
@@ -15,7 +15,7 @@ const Banner = () => {
       </p>
       <div className="text-center mt-6">
         <div className="button_container">
-          <button>Claim Free Credit</button>
+          <button onClick={addCoin}>Claim Free Credit</button>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AvailableContainer from "../Components/AvailableContainer";
 import Banner from "../Components/Banner";
 import Footer from "../Components/Footer";
@@ -7,11 +8,15 @@ import SelectedContainer from "../Components/SelectedContainer";
 import "./Home.css";
 
 const Home = () => {
+  const [coin, setCoin] = useState(0);
+  const addCoin = () => {
+    setCoin(coin + 130000);
+  };
   return (
     <div className=" home_container">
-      <Header />
+      <Header coin={coin} />
       <div className="border-2 w-[95%] lg:w-[80%] mx-auto">
-        <Banner />
+        <Banner addCoin={addCoin} />
         {/* this will be conditionally swap */}
         <AvailableContainer />
         <SelectedContainer />

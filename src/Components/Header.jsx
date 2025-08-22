@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ coin }) => {
   return (
     <div className="backdrop-blur-lg py-6 sticky top-0">
       <div className="w-[95%] lg:w-[80%] mx-auto flex justify-between items-center">
@@ -66,7 +66,7 @@ const Header = () => {
           </div>
           <div className="flex items-center border-2 border-[#e7e7e7] rounded-xl py-4 px-5 ">
             <h3 className="mr-3 text-[18px] text-[#595959]">
-              <span className="mr-2">0</span>Coin{" "}
+              <span className="mr-2">{coin}</span>Coin{" "}
             </h3>
             <img
               className="w-5 h-5"

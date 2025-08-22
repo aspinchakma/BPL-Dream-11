@@ -29,7 +29,6 @@ const Home = () => {
   // choose player
   const [choosePlayers, setChoosePlayers] = useState([]);
   const handleChoosePlayer = (player) => {
-    console.log(choosePlayers.length);
     if (choosePlayers.length <= 5) {
       if (coin > player.biddingPrice) {
         // already exist or not validation
@@ -38,10 +37,10 @@ const Home = () => {
         );
         if (!isExist) {
           setChoosePlayers([...choosePlayers, player]);
-          console.log(player);
           setCoin(coin - player.biddingPrice);
+          toast("Successfully Added In Your Team!");
         } else {
-          toast("Player Already Added");
+          toast("Player Already Added!");
         }
       } else {
         toast("Not Enough Money!");
@@ -50,7 +49,15 @@ const Home = () => {
       toast("Players are Full!");
     }
   };
-  console.log(choosePlayers);
+
+  // Deleted Player
+  const handleDeletedPerson = (data) => {
+    const filteredData = choosePlayers.filter(
+      (player) => player.name !== data.name
+    );
+    setChoosePlayers(filteredData);
+    toast("Successfully deleted!");
+  };
   return (
     <div className=" home_container">
       <ToastContainer
@@ -67,7 +74,7 @@ const Home = () => {
         transition={Bounce}
       />
       <Header coin={coin} />
-      <div className="border-2 w-[95%] lg:w-[80%] mx-auto">
+      <div className=" w-[95%] lg:w-[80%] mx-auto">
         <Banner addCoin={addCoin} />
         {/* this will be conditionally swap */}
 
@@ -83,7 +90,10 @@ const Home = () => {
         {select ? (
           <AvailableContainer handleChoosePlayer={handleChoosePlayer} />
         ) : (
-          <SelectedContainer />
+          <SelectedContainer
+            choosePlayers={choosePlayers}
+            handleDeletedPerson={handleDeletedPerson}
+          />
         )}
 
         <Newsletter />

@@ -10,7 +10,9 @@ const ToggleController = ({
       {select ? (
         <h3 className="text-2xl font-bold">Available Players</h3>
       ) : (
-        <h3 className="text-2xl font-bold">Selected Players</h3>
+        <h3 className="text-2xl font-bold">
+          Selected Players ({choosePlayers.length}/6)
+        </h3>
       )}
       <div className="flex border-black toggle_container my-4 lg:my-0">
         <p

@@ -1,7 +1,15 @@
-const SelectedContainer = () => {
+import SelectedPlayer from "./SelectedPlayer";
+
+const SelectedContainer = ({ choosePlayers, handleDeletedPerson }) => {
   return (
     <div>
-      <h3>This is Seleted Container</h3>
+      {choosePlayers.map((player) => (
+        <SelectedPlayer
+          player={player}
+          key={player.id}
+          handleDeletedPerson={handleDeletedPerson}
+        />
+      ))}
     </div>
   );
 };

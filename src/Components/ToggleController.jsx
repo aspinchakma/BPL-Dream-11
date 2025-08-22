@@ -5,13 +5,13 @@ const ToggleController = ({
   select,
 }) => {
   return (
-    <div className="flex items-center justify-between mt-5 lg:mt-10">
+    <div className="lg:flex lg:items-center lg:justify-between my-5 lg:mt-10">
       {select ? (
         <h3 className="text-2xl font-bold">Available Players</h3>
       ) : (
         <h3 className="text-2xl font-bold">Selected Players</h3>
       )}
-      <div className="flex border-black toggle_container">
+      <div className="flex border-black toggle_container my-4 lg:my-0">
         <p
           onClick={handleAvaiableButton}
           className={select ? "clicked_button_color" : ""}

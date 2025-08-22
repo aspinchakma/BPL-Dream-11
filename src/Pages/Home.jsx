@@ -72,16 +72,37 @@ const Home = () => {
 
   // Deleted Player
   const handleDeletedPerson = (data) => {
-    const filteredData = choosePlayers.filter(
-      (player) => player.name !== data.name
-    );
-    setChoosePlayers(filteredData);
-    toast("Successfully deleted!");
+    // load data from local storage
+    const playersData = loadDataLS();
+    // load data from server
+    const loadDataFromServer = async () => {
+      try {
+        const url = `https://aspinchakma.github.io/api-for-practice/players.json`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error("Server Problem!");
+        }
+        const result = await res.json();
+        // removing data from local storage filtering by deleted id
+        const finalIDs = playersData.filter((id) => data.id !== id);
+        // get data by finalIDS
+        const finalPlayersData = finalIDs.map((id) =>
+          result.find((player) => player.id === id)
+        );
+        // add data to state
+        setChoosePlayers(finalPlayersData);
+        // add to updated data in local storage
+        localStorage.setItem("players", JSON.stringify(finalIDs));
+        toast("Successfully deleted!");
+      } catch (error) {
+        toast(error.message);
+      }
+    };
+    loadDataFromServer();
   };
 
   // fist data load when user refresh the ui
   useEffect(() => {
-    const players = loadDataLS();
     const loadDataFromServer = async () => {
       try {
         const url = `https://aspinchakma.github.io/api-for-practice/players.json`;
@@ -91,10 +112,9 @@ const Home = () => {
         }
         const data = await res.json();
         const dataFromLS = loadDataLS();
-        console.log(data);
-        console.log(dataFromLS);
 
         // this method filter data properly but serial problem
+        //  const players = loadDataLS();
         // const filteredPlayers = data.filter((p) => dataFromLS.includes(p.id));
         // console.log(filteredPlayers);
 

@@ -7,7 +7,12 @@ import Header from "../Components/Header";
 import Newsletter from "../Components/Newsletter";
 import SelectedContainer from "../Components/SelectedContainer";
 import ToggleController from "../Components/ToggleController";
-import { addCoinLs, loadCoinLS, loadDataLS } from "../Utilities/LocalStorage";
+import {
+  addCoinLs,
+  loadCoinLS,
+  loadDataLS,
+  storeDataOnLS,
+} from "../Utilities/LocalStorage";
 import "./Home.css";
 
 const Home = () => {
@@ -45,9 +50,14 @@ const Home = () => {
         );
         if (!isExist) {
           setChoosePlayers([...choosePlayers, player]);
+          // update player number on local Storage
+          storeDataOnLS(player.id);
+
+          // set coin on the state
           setCoin(coin - player.biddingPrice);
-          // update local storage data
+          // update coin on local Storage
           addCoinLs(coin - player.biddingPrice);
+
           toast("Successfully Added In Your Team!");
         } else {
           toast("Player Already Added!");
@@ -72,7 +82,25 @@ const Home = () => {
   // fist data load when user refresh the ui
   useEffect(() => {
     const players = loadDataLS();
-    console.log(players);
+    const loadDataFromServer = async () => {
+      try {
+        const url = `https://aspinchakma.github.io/api-for-practice/players.json`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error("Server Problme");
+        }
+        const data = await res.json();
+        const dataFromLS = loadDataLS();
+        console.log(dataFromLS);
+        console.log(players);
+
+        // matching object set to the players state
+        // setChoosePlayers(matchingObject);
+      } catch (error) {
+        toast(error.message);
+      }
+    };
+    loadDataFromServer();
   }, []);
   return (
     <div className=" home_container">

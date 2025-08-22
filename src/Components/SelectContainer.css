@@ -1,0 +1,14 @@
+.add_more_button_container {
+  border: 1px solid rgba(19, 19, 19, 1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+}
+
+.add_more_button_container button {
+  border-radius: 12px;
+  background: rgba(231, 254, 41, 1);
+  padding: 14px 20px 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+}

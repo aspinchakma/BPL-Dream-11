@@ -136,6 +136,11 @@ const Home = () => {
     };
     loadDataFromServer();
   }, []);
+
+  // Add More Player Button
+  const hangleAddMorePlayer = () => {
+    setSelect(true);
+  };
   return (
     <div className=" home_container">
       <ToastContainer
@@ -171,6 +176,7 @@ const Home = () => {
           <SelectedContainer
             choosePlayers={choosePlayers}
             handleDeletedPerson={handleDeletedPerson}
+            hangleAddMorePlayer={hangleAddMorePlayer}
           />
         )}
 

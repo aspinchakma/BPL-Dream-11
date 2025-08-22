@@ -2,8 +2,17 @@ import { faFlag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Player = ({ player }) => {
-  const { name, image, role, country, bowling, biddingPrice, batting, id } =
-    player;
+  const {
+    name,
+    image,
+    role,
+    country,
+    bowling,
+    biddingPrice,
+    batting,
+    id,
+    rating,
+  } = player;
   console.log(player);
   return (
     <div className="p-6 rounded-2xl border-2 border-[#e7e7e7]">
@@ -37,29 +46,32 @@ const Player = ({ player }) => {
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
+            checked={rating == 1}
           />
           <input
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
-            defaultChecked
+            checked={rating == 2}
           />
           <input
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
-            checked
+            checked={rating == 3}
             readOnly
           />
           <input
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
+            checked={rating == 4}
           />
           <input
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
+            checked={rating == 5}
           />
         </div>
       </div>

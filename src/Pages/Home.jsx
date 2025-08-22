@@ -60,13 +60,43 @@ const Home = () => {
 
           toast("Successfully Added In Your Team!");
         } else {
-          toast("Player Already Added!");
+          toast.warn("Player Already Added!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
         }
       } else {
-        toast("Not Enough Money!");
+        toast.warn("Not Enough Money!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       }
     } else {
-      toast("Players are Full!");
+      toast.warn("Players are Full!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
@@ -93,7 +123,17 @@ const Home = () => {
         setChoosePlayers(finalPlayersData);
         // add to updated data in local storage
         localStorage.setItem("players", JSON.stringify(finalIDs));
-        toast("Successfully deleted!");
+        toast.warn("Successfully deleted!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       } catch (error) {
         toast(error.message);
       }
@@ -131,7 +171,17 @@ const Home = () => {
         // matching object set to the players state
         // setChoosePlayers(matchingObject);
       } catch (error) {
-        toast(error.message);
+        toast.error(error.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       }
     };
     loadDataFromServer();

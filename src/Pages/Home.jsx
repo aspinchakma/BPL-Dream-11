@@ -174,7 +174,7 @@ const Home = () => {
           />
         )}
 
-        <div className="relative">
+        <div className="relative lg:mt-[200px] mt-[170px]">
           <Newsletter />
         </div>
       </div>

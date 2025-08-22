@@ -1,7 +1,7 @@
 import "./Footer.css";
 const Footer = () => {
   return (
-    <div className="bg-black lg:pt-[30px] pt-10">
+    <div className="bg-black lg:pt-48 pt-40">
       <div className="w-[95%] lg:w-[80%] mx-auto mb-7 lg:mb-9">
         <div>
           <img

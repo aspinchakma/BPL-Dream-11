@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 import AvailableContainer from "../Components/AvailableContainer";
 import Banner from "../Components/Banner";
 import Footer from "../Components/Footer";
@@ -12,7 +13,8 @@ const Home = () => {
   // Displaying Coing
   const [coin, setCoin] = useState(0);
   const addCoin = () => {
-    setCoin(coin + 130000);
+    setCoin(coin + 290000);
+    toast(`Successfully Added ${290000} Taka!`);
   };
 
   // Toggle Functionalities
@@ -25,6 +27,19 @@ const Home = () => {
   };
   return (
     <div className=" home_container">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <Header coin={coin} />
       <div className="border-2 w-[95%] lg:w-[80%] mx-auto">
         <Banner addCoin={addCoin} />

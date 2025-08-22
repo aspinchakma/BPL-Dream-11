@@ -91,8 +91,22 @@ const Home = () => {
         }
         const data = await res.json();
         const dataFromLS = loadDataLS();
+        console.log(data);
         console.log(dataFromLS);
-        console.log(players);
+
+        // this method filter data properly but serial problem
+        // const filteredPlayers = data.filter((p) => dataFromLS.includes(p.id));
+        // console.log(filteredPlayers);
+
+        // load data with maintaining data serial
+        if (!dataFromLS.length) {
+          setChoosePlayers([]);
+        } else {
+          const finalPlayers = dataFromLS.map((id) =>
+            data.find((object) => object.id == id)
+          );
+          setChoosePlayers(finalPlayers);
+        }
 
         // matching object set to the players state
         // setChoosePlayers(matchingObject);

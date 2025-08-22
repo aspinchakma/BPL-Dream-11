@@ -3,3 +3,5 @@
 @tailwind utilities;
 
 @plugin "daisyui";
+/* Font Awesome*/
+@import "@fortawesome/fontawesome-free/css/all.css";

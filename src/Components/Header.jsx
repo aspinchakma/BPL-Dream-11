@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({ coin }) => {
   return (
-    <div className="backdrop-blur-lg py-6 sticky top-0">
+    <div className="backdrop-blur-lg py-4 sticky top-0">
       <div className="w-[95%] lg:w-[80%] mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <div className="dropdown">

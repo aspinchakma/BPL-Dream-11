@@ -29,10 +29,20 @@ const Home = () => {
   // choose player
   const [choosePlayers, setChoosePlayers] = useState([]);
   const handleChoosePlayer = (player) => {
-    if (choosePlayers.length <= 6) {
+    console.log(choosePlayers.length);
+    if (choosePlayers.length <= 5) {
       if (coin > player.biddingPrice) {
-        setChoosePlayers([...choosePlayers, player]);
-        setCoin(coin - player.biddingPrice);
+        // already exist or not validation
+        const isExist = choosePlayers.find(
+          (playerLooping) => playerLooping.name === player.name
+        );
+        if (!isExist) {
+          setChoosePlayers([...choosePlayers, player]);
+          console.log(player);
+          setCoin(coin - player.biddingPrice);
+        } else {
+          toast("Player Already Added");
+        }
       } else {
         toast("Not Enough Money!");
       }
@@ -62,11 +72,14 @@ const Home = () => {
         {/* this will be conditionally swap */}
 
         {/* This is Toggle Controler Component */}
-        <ToggleController
-          select={select}
-          handleAvaiableButton={handleAvaiableButton}
-          handleSelectedButton={handleSelectedButton}
-        />
+        <div className="py-2">
+          <ToggleController
+            select={select}
+            handleAvaiableButton={handleAvaiableButton}
+            handleSelectedButton={handleSelectedButton}
+            choosePlayers={choosePlayers}
+          />
+        </div>
         {select ? (
           <AvailableContainer handleChoosePlayer={handleChoosePlayer} />
         ) : (

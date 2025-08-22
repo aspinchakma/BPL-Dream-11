@@ -3,9 +3,10 @@ const ToggleController = ({
   handleAvaiableButton,
   handleSelectedButton,
   select,
+  choosePlayers,
 }) => {
   return (
-    <div className="lg:flex lg:items-center lg:justify-between my-5 lg:mt-10">
+    <div className="lg:flex lg:items-center lg:justify-between my-3 lg:mt-10">
       {select ? (
         <h3 className="text-2xl font-bold">Available Players</h3>
       ) : (
@@ -22,7 +23,7 @@ const ToggleController = ({
           className={select ? "" : "clicked_button_color"}
           onClick={handleSelectedButton}
         >
-          Selected (0)
+          Selected ({choosePlayers.length})
         </p>
       </div>
     </div>

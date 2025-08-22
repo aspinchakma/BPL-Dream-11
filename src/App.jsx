@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import PlayerDetails from "./Components/PlayerDetails";
 import Fixture from "./Pages/Fixture";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
@@ -14,6 +15,7 @@ function App() {
         <Route path="/fixture" element={<Fixture />} />
         <Route path="/schedules" element={<Schedules />} />
         <Route path="/teams" element={<Teams />} />
+        <Route path="/player/:id" element={<PlayerDetails />} />
         {/* Catch All Routes */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,5 +1,6 @@
 import { faFlag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Player = ({ player, handleChoosePlayer }) => {
   const {
@@ -91,7 +92,13 @@ const Player = ({ player, handleChoosePlayer }) => {
           Choose Player
         </button>
       </div>
-      <button className="text-blue-500">More About</button>
+      <Link
+        state={player}
+        className="text-blue-500"
+        to={`/player/${player.id}`}
+      >
+        More About
+      </Link>
     </div>
   );
 };

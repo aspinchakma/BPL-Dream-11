@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Player from "./Player";
 
-const AvailableContainer = () => {
+const AvailableContainer = ({ handleChoosePlayer }) => {
   const [players, setPlayers] = useState([]);
   useEffect(() => {
     const loadData = async () => {
@@ -25,7 +25,11 @@ const AvailableContainer = () => {
       {players.length ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {players.map((player) => (
-            <Player key={player.id} player={player} />
+            <Player
+              handleChoosePlayer={handleChoosePlayer}
+              key={player.id}
+              player={player}
+            />
           ))}
         </div>
       ) : (

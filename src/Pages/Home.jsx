@@ -25,6 +25,22 @@ const Home = () => {
   const handleSelectedButton = () => {
     setSelect(false);
   };
+
+  // choose player
+  const [choosePlayers, setChoosePlayers] = useState([]);
+  const handleChoosePlayer = (player) => {
+    if (choosePlayers.length <= 6) {
+      if (coin > player.biddingPrice) {
+        setChoosePlayers([...choosePlayers, player]);
+        setCoin(coin - player.biddingPrice);
+      } else {
+        toast("Not Enough Money!");
+      }
+    } else {
+      toast("Players are Full!");
+    }
+  };
+  console.log(choosePlayers);
   return (
     <div className=" home_container">
       <ToastContainer
@@ -51,7 +67,11 @@ const Home = () => {
           handleAvaiableButton={handleAvaiableButton}
           handleSelectedButton={handleSelectedButton}
         />
-        {select ? <AvailableContainer /> : <SelectedContainer />}
+        {select ? (
+          <AvailableContainer handleChoosePlayer={handleChoosePlayer} />
+        ) : (
+          <SelectedContainer />
+        )}
 
         <Newsletter />
       </div>

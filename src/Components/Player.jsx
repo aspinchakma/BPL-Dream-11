@@ -1,7 +1,7 @@
 import { faFlag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Player = ({ player }) => {
+const Player = ({ player, handleChoosePlayer }) => {
   const {
     name,
     image,
@@ -13,7 +13,6 @@ const Player = ({ player }) => {
     id,
     rating,
   } = player;
-  console.log(player);
   return (
     <div className="p-6 rounded-2xl border-2 border-[#e7e7e7]">
       <img
@@ -37,7 +36,7 @@ const Player = ({ player }) => {
         </div>
         <p className="text-[16px] px-4 py-2 rounded-lg bg-[#f3f3f3]">{role}</p>
       </div>
-      <div class="divider my-2"></div>
+      <div className="divider my-2"></div>
       <div className="flex justify-between items-center">
         <p className="font-bold">Rating: </p>
         {/* Rating  */}
@@ -47,12 +46,14 @@ const Player = ({ player }) => {
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
             checked={rating == 1}
+            readOnly
           />
           <input
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
             checked={rating == 2}
+            readOnly
           />
           <input
             type="radio"
@@ -66,12 +67,14 @@ const Player = ({ player }) => {
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
             checked={rating == 4}
+            readOnly
           />
           <input
             type="radio"
             name={`rating-${id}`}
             className="mask mask-star-2 bg-orange-400"
             checked={rating == 5}
+            readOnly
           />
         </div>
       </div>
@@ -81,10 +84,14 @@ const Player = ({ player }) => {
       </div>
       <div className="flex justify-between items-center">
         <p className="font-bold">Price: {biddingPrice}Tk</p>
-        <button className="rounded-lg py-2 px-4 border-2 border-[#e7e7e7]">
+        <button
+          onClick={() => handleChoosePlayer(player)}
+          className="rounded-lg py-2 px-4 border-2 border-[#e7e7e7]"
+        >
           Choose Player
         </button>
       </div>
+      <button className="text-blue-500">More About</button>
     </div>
   );
 };

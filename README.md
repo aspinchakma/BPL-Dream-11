@@ -23,3 +23,4 @@
 - **Not Found page added dynamically**
 - **Load data from server**
 - **Multiple page added using react router**
+- **Different Alert uses to make user noticeable**
